@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and old Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* OPTIONAL: make sure body never shows default scrollbar */
+html,
+body {
+  overflow-y: scroll;
+  background-color: #0f0f0f; /* match your dark theme */
+  color-scheme: dark; /* ensures scrollbar blends with dark UI */
+}
+
+body.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+body.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
