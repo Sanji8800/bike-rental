@@ -18,7 +18,7 @@ const Contact = forwardRef<HTMLDivElement, ContactProps>(({ id }, ref) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -32,8 +32,26 @@ const Contact = forwardRef<HTMLDivElement, ContactProps>(({ id }, ref) => {
       return;
     }
 
-    alert(`Thank you for your message! We'll get back to you soon.`);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+      const response = await fetch('http://localhost:3002/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send message');
+      }
+
+      alert(`Thank you for your message! We'll get back to you soon.`);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
+      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`);
+    }
   };
 
   return (

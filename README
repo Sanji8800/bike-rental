@@ -1,0 +1,13 @@
+## how to make it work
+
+open two terminal instances, and run the following commands on each terminal
+
+```
+npm run start:backend
+```
+
+---
+
+```
+npm run dev
+```

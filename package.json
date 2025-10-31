@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:backend": "node src/backend/server.js",
+    "dev:backend": "nodemon src/backend/server.js",
+    "setup:backend": "node src/backend/setup-database.js",
+    "kill-ports": "node kill-port.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
@@ -20,7 +24,14 @@
     "tabler-icons-react": "^1.56.0",
     "tailwindcss": "^4.1.16",
     "tw-animate-css": "^1.4.0",
-    "zustand": "^5.0.8"
+    "zustand": "^5.0.8",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "nodemailer": "^7.0.10",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -35,7 +46,8 @@
     "globals": "^16.4.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
-    "vite": "npm:rolldown-vite@7.1.14"
+    "vite": "npm:rolldown-vite@7.1.14",
+    "nodemon": "^3.0.2"
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.1.14"
